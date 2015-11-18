@@ -25,6 +25,11 @@ span.omitted {
 	padding:0px 0px 1px 0px;
 	background:#fafafa;
 }
+
+.container {
+	margin-bottom: 20px
+}
+
 span.cerr {
   background:url(tilde.png) repeat-x left bottom;
 }

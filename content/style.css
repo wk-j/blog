@@ -28,6 +28,9 @@ span.omitted {
 
 .container {
 	margin-bottom: 40px
+	width:800px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 span.cerr {

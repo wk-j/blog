@@ -31,6 +31,10 @@ span.omitted {
 	background:#fafafa;
 }
 
+a {
+	font-size:13px;
+}
+
 .container {
 	font-family:  octicons-anchor;
 	width:800px;

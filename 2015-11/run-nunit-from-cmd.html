@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <!--
+      The รัน Unit จาก Command line
+ parameters will be replaced with the
+      document title extracted from the <h1> element or
+      file name, if there is no <h1> heading
+    -->
+    <title>รัน Unit จาก Command line
+</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="../content/style.css" />
+    <script type="text/javascript" src="../content/tips.js" ></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="row" style="margin-top:30px">
+        <div class="span10" id="main">
+          <h1>รัน Unit จาก Command line</h1>
+
+<h2>ไฟล์ build.ps1</h2>
+
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+<span class="l">6: </span>
+<span class="l">7: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="o">$</span><span class="i">cmd</span><span class="o">=$</span><span class="i">args</span>[<span class="n">0</span>]
+<span class="k">if</span>(<span class="o">$</span><span class="i">cmd</span> <span class="o">-</span><span class="i">eq</span> <span class="s">&quot;test&quot;</span>) {
+    <span class="o">$</span><span class="i">fixture</span><span class="o">=$</span><span class="i">args</span>[<span class="n">1</span>]
+    <span class="o">$</span><span class="i">project</span><span class="o">=</span><span class="s">&quot;MyProject.Tests&quot;</span>
+    <span class="o">$</span><span class="i">nunit</span> <span class="o">=</span> <span class="s">&quot;C:\Program Files (x86)\NUnit 2.6.4\bin\nunit-console.exe&quot;</span>
+    <span class="o">&amp;</span> <span class="o">$</span><span class="i">nunit</span> <span class="o">/</span><span class="i">fixture</span><span class="o">=$</span><span class="i">project</span><span class="o">.</span><span class="o">$</span><span class="i">fixture</span> <span class="s">&quot;$project/bin/Release/$project.dll&quot;</span>
+}
+</code></pre></td>
+</tr>
+</table>
+
+<h2>Run</h2>
+
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="i">powershell</span> <span class="o">-</span><span class="i">File</span> <span class="i">build</span><span class="o">.</span><span class="i">ps1</span> <span class="i">test</span> <span class="i">ReportTest</span>
+</code></pre></td>
+</tr>
+</table>
+
+<h2>หมายเหตุ</h2>
+
+<blockquote>
+  <blockquote>
+    <p>F# Module ใช้เครื่องหมาย + ขั้นระหว่าง Module กับ Class เช่น MyNamespace.MyModule+MyClass</p>
+  </blockquote>
+</blockquote>
+
+          <!--  -->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

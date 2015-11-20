@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <!--
+      The Zip และ Unzip ไฟล์ด้วย PowerShell
+ parameters will be replaced with the
+      document title extracted from the <h1> element or
+      file name, if there is no <h1> heading
+    -->
+    <title>Zip และ Unzip ไฟล์ด้วย PowerShell
+</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="../content/style.css" />
+    <script type="text/javascript" src="../content/tips.js" ></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="row" style="margin-top:30px">
+        <div class="span10" id="main">
+          <h1>Zip และ Unzip ไฟล์ด้วย PowerShell</h1>
+
+<p>Zip ไฟล์ทั้งหมดใน Folder Production โดยตั้งชื่อไฟล์ให้่มี วันเดือนปีปัจจุบันลงไปด้วย</p>
+
+<h2>Zip.ps1</h2>
+
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="i">Add</span><span class="o">-</span><span class="i">Type</span> <span class="o">-</span><span class="i">Assembly</span> <span class="s">&quot;System.IO.Compression.FilmeSystem&quot;</span>
+
+<span class="o">$</span><span class="i">production</span><span class="o">=</span>
+<span class="o">$</span><span class="i">version</span> <span class="o">=</span> <span class="i">Get</span><span class="o">-</span><span class="i">Date</span> <span class="o">-</span><span onmouseout="hideTip(event, 'fs1', 1)" onmouseover="showTip(event, 'fs1', 1)" class="i">Format</span> <span class="s">&quot;yy.MMdd&quot;</span>
+[<span onmouseout="hideTip(event, 'fs2', 2)" onmouseover="showTip(event, 'fs2', 2)" class="i">System</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs3', 3)" onmouseover="showTip(event, 'fs3', 3)" class="i">IO</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs4', 4)" onmouseover="showTip(event, 'fs4', 4)" class="i">Compression</span><span class="o">.</span><span class="i">ZipFile</span>]<span class="o">::</span><span class="i">CreateFromDirectory</span>(<span class="o">$</span><span class="i">production</span>, <span class="s">&quot;Production-$version.zip&quot;</span>)
+</code></pre></td>
+</tr>
+</table>
+
+<p>Unzip ไฟล์เก็บไปใน Folder ที่มีชื่อเดียวกับชื่อไฟล์ Zip โดย Check ก่อนว่า Folder มีอยู่แล้วหรือเปล่า ถ้ายังไม่มีก็สร้างขึ้นใหม่</p>
+
+<h2>Unzip.ps1</h2>
+
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="i">Add</span><span class="o">-</span><span class="i">Type</span> <span class="o">-</span><span class="i">Assembly</span> <span class="s">&quot;System.IO.Compression.FileSystem&quot;</span>
+
+<span class="o">$</span><span class="i">file</span> <span class="o">=</span> <span class="o">$</span><span class="i">args</span>[<span class="n">0</span>]
+<span class="o">$</span><span class="i">version</span> <span class="o">=</span> [<span onmouseout="hideTip(event, 'fs2', 5)" onmouseover="showTip(event, 'fs2', 5)" class="i">System</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs3', 6)" onmouseover="showTip(event, 'fs3', 6)" class="i">IO</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs5', 7)" onmouseover="showTip(event, 'fs5', 7)" class="i">Path</span>]<span class="o">::</span><span class="i">GetFileNameWithoutExtension</span>(<span class="o">$</span><span class="i">file</span>)
+
+<span class="k">if</span>(<span class="o">!</span><span class="i">Test</span><span class="o">-</span><span class="i">Path</span>) {
+    <span class="i">New</span><span class="o">-</span><span class="i">Item</span> <span class="o">-</span><span class="i">ItemType</span> <span class="i">Directory</span> <span class="o">$</span><span class="i">version</span>
+}
+
+[<span onmouseout="hideTip(event, 'fs2', 8)" onmouseover="showTip(event, 'fs2', 8)" class="i">System</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs3', 9)" onmouseover="showTip(event, 'fs3', 9)" class="i">IO</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs4', 10)" onmouseover="showTip(event, 'fs4', 10)" class="i">Compression</span><span class="o">.</span><span class="i">ZipFile</span>]<span class="o">::</span><span class="i">ExtractToDirectory</span>(<span class="s">&quot;$file&quot;</span>, <span class="s">&quot;$version&quot;</span>)
+</code></pre></td>
+</tr>
+</table>
+
+          <!-- <div class="tip" id="fs1">Multiple items<br />type Format&lt;&#39;Printer,&#39;State,&#39;Residue,&#39;Result&gt; = PrintfFormat&lt;&#39;Printer,&#39;State,&#39;Residue,&#39;Result&gt;<br /><br />Full name: Microsoft.FSharp.Core.Format&lt;_,_,_,_&gt;<br /><br />--------------------<br />type Format&lt;&#39;Printer,&#39;State,&#39;Residue,&#39;Result,&#39;Tuple&gt; = PrintfFormat&lt;&#39;Printer,&#39;State,&#39;Residue,&#39;Result,&#39;Tuple&gt;<br /><br />Full name: Microsoft.FSharp.Core.Format&lt;_,_,_,_,_&gt;</div>
+<div class="tip" id="fs2">namespace System</div>
+<div class="tip" id="fs3">namespace System.IO</div>
+<div class="tip" id="fs4">namespace System.IO.Compression</div>
+<div class="tip" id="fs5">type Path =<br />&#160;&#160;static val InvalidPathChars : char[]<br />&#160;&#160;static val AltDirectorySeparatorChar : char<br />&#160;&#160;static val DirectorySeparatorChar : char<br />&#160;&#160;static val PathSeparator : char<br />&#160;&#160;static val VolumeSeparatorChar : char<br />&#160;&#160;static member ChangeExtension : path:string * extension:string -&gt; string<br />&#160;&#160;static member Combine : [&lt;ParamArray&gt;] paths:string[] -&gt; string + 3 overloads<br />&#160;&#160;static member GetDirectoryName : path:string -&gt; string<br />&#160;&#160;static member GetExtension : path:string -&gt; string<br />&#160;&#160;static member GetFileName : path:string -&gt; string<br />&#160;&#160;...<br /><br />Full name: System.IO.Path</div>
+ -->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

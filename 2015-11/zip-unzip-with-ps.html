@@ -24,9 +24,7 @@
         <div class="span10" id="main">
           <h1>Zip และ Unzip ไฟล์ด้วย PowerShell</h1>
 
-<p>Zip ไฟล์ทั้งหมดใน Folder Production โดยตั้งชื่อไฟล์ให้่มี วันเดือนปีปัจจุบันลงไปด้วย</p>
-
-<h2>Zip.ps1</h2>
+<h2>ไฟล์ Zip.ps1</h2>
 
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 <span class="l">2: </span>
@@ -36,16 +34,16 @@
 </pre></td>
 <td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="i">Add</span><span class="o">-</span><span class="i">Type</span> <span class="o">-</span><span class="i">Assembly</span> <span class="s">&quot;System.IO.Compression.FilmeSystem&quot;</span>
 
-<span class="o">$</span><span class="i">production</span><span class="o">=</span>
+<span class="o">$</span><span class="i">production</span><span class="o">=</span><span class="s">&quot;</span><span class="e">\\</span><span class="s">192.168.0.XX\Production&quot;</span>
 <span class="o">$</span><span class="i">version</span> <span class="o">=</span> <span class="i">Get</span><span class="o">-</span><span class="i">Date</span> <span class="o">-</span><span onmouseout="hideTip(event, 'fs1', 1)" onmouseover="showTip(event, 'fs1', 1)" class="i">Format</span> <span class="s">&quot;yy.MMdd&quot;</span>
 [<span onmouseout="hideTip(event, 'fs2', 2)" onmouseover="showTip(event, 'fs2', 2)" class="i">System</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs3', 3)" onmouseover="showTip(event, 'fs3', 3)" class="i">IO</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs4', 4)" onmouseover="showTip(event, 'fs4', 4)" class="i">Compression</span><span class="o">.</span><span class="i">ZipFile</span>]<span class="o">::</span><span class="i">CreateFromDirectory</span>(<span class="o">$</span><span class="i">production</span>, <span class="s">&quot;Production-$version.zip&quot;</span>)
 </code></pre></td>
 </tr>
 </table>
 
-<p>Unzip ไฟล์เก็บไปใน Folder ที่มีชื่อเดียวกับชื่อไฟล์ Zip โดย Check ก่อนว่า Folder มีอยู่แล้วหรือเปล่า ถ้ายังไม่มีก็สร้างขึ้นใหม่</p>
+<p>Zip ไฟล์ทั้งหมดใน Folder Production โดยตั้งชื่อไฟล์ให้มี วันเดือนปีปัจจุบันแนบลงไปด้วย</p>
 
-<h2>Unzip.ps1</h2>
+<h2>ไฟล์ Unzip.ps1</h2>
 
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
 <span class="l"> 2: </span>
@@ -71,6 +69,8 @@
 </code></pre></td>
 </tr>
 </table>
+
+<p>Unzip ไฟล์เก็บใน Folder ชื่อเดียวกับไฟล์ Zip โดย Check ก่อนว่า Folder มีอยู่แล้วหรือไม่ ถ้ายังก็สร้างขึ้นก่อน</p>
 
           <!-- <div class="tip" id="fs1">Multiple items<br />type Format&lt;&#39;Printer,&#39;State,&#39;Residue,&#39;Result&gt; = PrintfFormat&lt;&#39;Printer,&#39;State,&#39;Residue,&#39;Result&gt;<br /><br />Full name: Microsoft.FSharp.Core.Format&lt;_,_,_,_&gt;<br /><br />--------------------<br />type Format&lt;&#39;Printer,&#39;State,&#39;Residue,&#39;Result,&#39;Tuple&gt; = PrintfFormat&lt;&#39;Printer,&#39;State,&#39;Residue,&#39;Result,&#39;Tuple&gt;<br /><br />Full name: Microsoft.FSharp.Core.Format&lt;_,_,_,_,_&gt;</div>
 <div class="tip" id="fs2">namespace System</div>

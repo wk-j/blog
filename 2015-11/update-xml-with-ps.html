@@ -50,13 +50,15 @@
 <span class="l">20: </span>
 <span class="l">21: </span>
 <span class="l">22: </span>
+<span class="l">23: </span>
 </pre></td>
 <td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">function</span> <span class="i">UpdateAppSetting</span>(<span class="o">$</span><span class="i">xml</span>, <span class="o">$</span><span class="i">key</span>, <span class="o">$</span><span class="i">value</span>) {
     <span class="o">$</span><span class="i">field</span> <span class="o">=</span> <span class="o">$</span><span class="i">xml</span><span class="o">.</span><span class="i">Configuration</span><span class="o">.</span><span class="i">AppSettings</span><span class="o">.</span><span class="i">Add</span> | <span class="i">where</span> <span class="o">$</span>{_<span class="o">.</span><span class="i">Key</span> <span class="o">-</span><span class="i">eq</span> <span class="o">$</span><span class="i">key</span>}
-    <span class="k">if</span>(<span class="o">!</span>[<span class="i">Object</span>]<span class="o">::</span><span class="i">ReferenceEquals</span>(<span class="o">$</span><span class="i">field</span>, <span class="o">$</span><span class="k">null</span>)) {
+    <span class="k">if</span>([<span class="i">Object</span>]<span class="o">::</span><span class="i">ReferenceEquals</span>(<span class="o">$</span><span class="i">field</span>, <span class="o">$</span><span class="k">null</span>)) {
         <span class="o">$</span><span class="i">el</span> <span class="o">=</span> <span class="o">$</span><span class="i">xml</span><span class="o">.</span><span class="i">CreateElement</span>(<span class="s">&quot;add&quot;</span>)
         <span class="o">$</span><span class="i">el</span><span class="o">.</span><span class="i">SetAttribute</span>(<span class="s">&quot;key&quot;</span>, <span class="o">$</span><span class="i">key</span>)
         <span class="o">$</span><span class="i">el</span><span class="o">.</span><span class="i">SetAttribute</span>(<span class="s">&quot;value&quot;</span>, <span class="o">$</span><span class="i">value</span><span class="o">.</span><span class="i">ToString</span>())
+        <span class="o">$</span><span class="i">xml</span><span class="o">.</span><span class="i">Configuration</span><span class="o">.</span><span class="i">AppSettings</span><span class="o">.</span><span class="i">AppendChild</span>(<span class="o">$</span><span class="i">el</span>)
     }<span class="k">else</span> {
         <span class="o">$</span><span class="i">field</span><span class="o">.</span><span class="i">Value</span> <span class="o">=</span> <span class="o">$</span><span class="i">value</span><span class="o">.</span><span class="i">ToString</span>()
     }
